@@ -2380,6 +2380,7 @@ namespace Inflectra.SpiraTest.PlugIns.Jira5DataSync
 
                 //**** Next lets load in the project and user mappings ****
                 bool success = spiraImportExport.Connection_Authenticate2(internalLogin, internalPassword, DATA_SYNC_NAME);
+
                 if (!success)
                 {
                     //We can't authenticate so end
@@ -2533,66 +2534,26 @@ namespace Inflectra.SpiraTest.PlugIns.Jira5DataSync
                         RemoteIncident[] incidentBatch = spiraImportExport.Incident_Retrieve(filters.ToArray(), sort, startRow, Constants.INCIDENT_PAGE_SIZE_SPIRA);
 
                         LogTraceEvent("Method: Incident_Retrieve, Count: " + incidentBatch.Count(), EventLogEntryType.Information);
-
-                        //Windstream Error Log trace from Sunil - rows 2538 thru 2554
-                        //LogErrorEvent("Custom Properties Count: " + incidentBatch.FirstOrDefault().CustomProperties.Count());
-                        //LogErrorEvent("Custom Properties 16 - CustomPropertyFieldName: " + incidentBatch.FirstOrDefault().CustomProperties[16].Definition.CustomPropertyFieldName);
-                        //LogErrorEvent("Custom Properties 16- CustomPropertyId6: " + incidentBatch.FirstOrDefault().CustomProperties[16].Definition.CustomPropertyId);
-                        //LogErrorEvent("Custom Properties 16 - CustomPropertyTypeId: " + incidentBatch.FirstOrDefault().CustomProperties[16].Definition.CustomPropertyTypeId);
-                        //LogErrorEvent("Custom Properties 16 - CustomPropertyTypeName: " + incidentBatch.FirstOrDefault().CustomProperties[16].Definition.CustomPropertyTypeName);
-                        //LogErrorEvent("Custom Properties 16 - Name: " + incidentBatch.FirstOrDefault().CustomProperties[16].Definition.Name);
-                        //LogErrorEvent("Custom Properties 16 - PropertyNumber: " + incidentBatch.FirstOrDefault().CustomProperties[16].Definition.PropertyNumber);
-                        //LogErrorEvent("Custom Properties 16 - StringValue: " + incidentBatch.FirstOrDefault().CustomProperties[16].StringValue);
-                        //LogErrorEvent("Custom Properties 16 - IntegerValue: " + incidentBatch.FirstOrDefault().CustomProperties[16].IntegerValue);
-                        //LogErrorEvent("Custom Properties 16 - DecimalValue: " + incidentBatch.FirstOrDefault().CustomProperties[16].DecimalValue);
-                        //LogErrorEvent("Custom Properties 16 - BooleanValue: " + incidentBatch.FirstOrDefault().CustomProperties[16].BooleanValue);
-                        //LogErrorEvent("Custom Properties - JIRA Sync Flag: " + incidentBatch.FirstOrDefault().CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag")).FirstOrDefault().StringValue);
-
-                        //LogErrorEvent("Custom Properties 17: " + incidentBatch.FirstOrDefault().CustomProperties.GetValue(17));
-                        //LogErrorEvent("Custom Properties Property Number: " + incidentBatch.FirstOrDefault().CustomProperties.Where(i => i.Definition.CustomPropertyFieldName.Equals("JIRA Sync Flag")).FirstOrDefault().Definition.PropertyNumber);
-                        //LogErrorEvent("Custom Properties Last One: " + incidentBatch.FirstOrDefault().CustomProperties.GetValue(incidentBatch.FirstOrDefault().CustomProperties.Where(i => i.Definition.CustomPropertyFieldName.Equals("")).FirstOrDefault().Definition.PropertyNumber));
-                        //LogErrorEvent("Custom Properties Last but one: " + incidentBatch.FirstOrDefault().CustomProperties.GetValue(incidentBatch.FirstOrDefault().CustomProperties.Count() - 2));
-
+                        
                         foreach (var item in incidentBatch)
                         {
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 0 - StringValue: " + item.CustomProperties[0].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 1 - StringValue: " + item.CustomProperties[1].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 2 - StringValue: " + item.CustomProperties[2].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 3 - StringValue: " + item.CustomProperties[3].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 4 - StringValue: " + item.CustomProperties[4].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 5 - StringValue: " + item.CustomProperties[5].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 6 - StringValue: " + item.CustomProperties[6].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 7 - CustomPropertyFieldName: " + item.CustomProperties[7].Definition.CustomPropertyFieldName);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 7 - CustomPropertyTypeName: " + item.CustomProperties[7].Definition.CustomPropertyTypeName);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 7 - CustomPropertyTypeId: " + item.CustomProperties[7].Definition.CustomPropertyTypeId);
-                            //LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 7 - Options: " + item.CustomProperties[7].Definition.Options.FirstOrDefault());
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 7 - CustomList: " + item.CustomProperties[7].Definition.CustomList.Values.FirstOrDefault());
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 8 - StringValue: " + item.CustomProperties[8].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 9 - StringValue: " + item.CustomProperties[9].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 10 - StringValue: " + item.CustomProperties[10].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 11 - StringValue: " + item.CustomProperties[11].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 12 - StringValue: " + item.CustomProperties[12].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 13 - StringValue: " + item.CustomProperties[13].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 14 - StringValue: " + item.CustomProperties[14].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 15 - StringValue: " + item.CustomProperties[15].StringValue);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 16 - CustomPropertyFieldName: " + item.CustomProperties[16].Definition.CustomPropertyFieldName);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 16 - CustomPropertyTypeName: " + item.CustomProperties[16].Definition.CustomPropertyTypeName);
-                            LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 16 - CustomPropertyTypeId: " + item.CustomProperties[16].Definition.CustomPropertyTypeId);
-                            //LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 16 - Options: " + item.CustomProperties[16].Definition.Options.FirstOrDefault());
-                    LogErrorEvent("Incident: " + item.IncidentId + "Custom Properties 17 - StringValue: " + item.CustomProperties[17].StringValue);
-                    //WINDSTREAM: This is and AND condition Rows 2542 thru 2547 modified by Windstream
-                    //WINSTREAM: First Condition: Checks Jira Sync Flag (custom #29) for "Y" to indication the incident should go to JIRA
-                    //WINDSTREAM: Second Condition: Checking to make sure incident has not previously synced to JIRA
-                    if (item.CustomProperties.GetValue(29).ToString().Equals("Y", StringComparison.CurrentCultureIgnoreCase) && !incidentMappings.Any(i => i.InternalId.Equals(item.IncidentId.Value)))
+                            //WINDSTREAM: This is and AND condition Rows 2542 thru 2547 modified by Windstream
+                            //WINSTREAM: First Condition: Checks Jira Sync Flag (custom #29) for "Y" to indication the incident should go to JIRA
+                            //WINDSTREAM: Second Condition: Checking to make sure incident has not previously synced to JIRA
+                            int valueId = item.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag")).FirstOrDefault().IntegerValue.GetValueOrDefault();
+                            string jiraSyncFlag = item.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag")).FirstOrDefault().Definition.CustomList.Values.Where(c => c.CustomPropertyValueId.Equals(valueId)).FirstOrDefault().Name;
+
+                            LogErrorEvent("Incident: " + item.IncidentId + "ValueId: " + valueId + "JIRA Sync Flag: " + jiraSyncFlag);
+
+                            if (item.CustomProperties.GetValue(29).ToString().Equals("Y", StringComparison.CurrentCultureIgnoreCase) && !incidentMappings.Any(i => i.InternalId.Equals(item.IncidentId.Value)))
                             {
                                 incidentList.Add(item);
                                 LogTraceEvent("Found new Incident: " + item.IncidentId, EventLogEntryType.Information);
                             }
                         }
 
-                        //var newIncidents = incidentBatch.Where(i => incidentMappings.Select(s => s.InternalId).Contains(i.IncidentId.Value));
-                        //incidentList.AddRange(newIncidents);
                     }
+
                     LogTraceEvent(eventLog, "Found " + incidentList.Count + " new incidents in " + productName, EventLogEntryType.Information);
 
                     //Create the mapping collections to hold any new items that need to get added to the mappings
@@ -2606,9 +2567,13 @@ namespace Inflectra.SpiraTest.PlugIns.Jira5DataSync
                     {
                         try
                         {
+                            //int valueId = remoteIncident.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag")).FirstOrDefault().IntegerValue.GetValueOrDefault();
+                            //string jiraSyncFlag = remoteIncident.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag")).FirstOrDefault().Definition.CustomList.Values.Where(c => c.CustomPropertyValueId.Equals(valueId)).FirstOrDefault().Name;
+
                             //Make sure we have access to this JIRA project
                             //WINDSTREAM: Change value of JIRA Project ID to be the value in Custom Property #30 on the specific incident.  Row 2567 modified by Windstream
                             JiraProject customJiraProject = jiraProjects.FirstOrDefault(j => j.Key == remoteIncident.CustomProperties.GetValue(30).ToString());
+
                             if (customJiraProject == null)
                             {
                                 //We can't connect so go to next project
