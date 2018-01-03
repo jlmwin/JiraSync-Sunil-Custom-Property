@@ -11,3 +11,9 @@ P:\WirelineProjects\SpiraTeam\3rd time Spira5_Jira-DataSync - Copy Sunil\3rd tim
 P:\WirelineProjects\SpiraTeam\3rd time Spira5_Jira-DataSync - Copy Sunil\3rd time Jira5DataSync\obj\Release\JiraDataSync.dll
 P:\WirelineProjects\SpiraTeam\3rd time Spira5_Jira-DataSync - Copy Sunil\3rd time Jira5DataSync\obj\Release\JiraDataSync.pdb
 P:\WirelineProjects\SpiraTeam\3rd time Spira5_Jira-DataSync - Copy Sunil\3rd time Jira5DataSync\obj\Release\Jira5DataSync.csprojResolveAssemblyReference.cache
+C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\obj\Release\Jira5DataSync.csprojResolveAssemblyReference.cache
+C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\bin\Release\JiraDataSync.dll.config
+C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\bin\Release\JiraDataSync.dll
+C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\bin\Release\JiraDataSync.pdb
+C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\obj\Release\JiraDataSync.dll
+C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\obj\Release\JiraDataSync.pdb
