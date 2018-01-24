@@ -2542,7 +2542,7 @@ namespace Inflectra.SpiraTest.PlugIns.Jira5DataSync
                             //WINDSTREAM: Second Condition: Checking to make sure incident has not previously synced to JIRA
                             int valueId = item.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag")).FirstOrDefault().IntegerValue.GetValueOrDefault();
                             string jiraSyncFlag = item.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag")).FirstOrDefault().Definition.CustomList.Values.Where(c => c.CustomPropertyValueId.Equals(valueId)).FirstOrDefault().Name;
-
+                             
                             LogErrorEvent("Incident: " + item.IncidentId + "ValueId: " + valueId + "JIRA Sync Flag: " + jiraSyncFlag);
 
                             if (item.CustomProperties.GetValue(29).ToString().Equals("Y", StringComparison.CurrentCultureIgnoreCase) && !incidentMappings.Any(i => i.InternalId.Equals(item.IncidentId.Value)))
