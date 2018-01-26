@@ -17,3 +17,9 @@ C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\bin\Debug\JiraDa
 C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\obj\Debug\Jira5DataSync.csprojResolveAssemblyReference.cache
 C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\obj\Debug\JiraDataSync.dll
 C:\Users\e0180006\Desktop\JiraSync-Sunil-Custom-Property-master\obj\Debug\JiraDataSync.pdb
+C:\Users\n9942734\g-repos\JiraSync-Sunil-Custom-Property\obj\Debug\Jira5DataSync.csprojResolveAssemblyReference.cache
+C:\Users\n9942734\g-repos\JiraSync-Sunil-Custom-Property\obj\Debug\JiraDataSync.dll
+C:\Users\n9942734\g-repos\JiraSync-Sunil-Custom-Property\obj\Debug\JiraDataSync.pdb
+C:\Users\n9942734\g-repos\JiraSync-Sunil-Custom-Property\bin\Debug\JiraDataSync.dll.config
+C:\Users\n9942734\g-repos\JiraSync-Sunil-Custom-Property\bin\Debug\JiraDataSync.dll
+C:\Users\n9942734\g-repos\JiraSync-Sunil-Custom-Property\bin\Debug\JiraDataSync.pdb
