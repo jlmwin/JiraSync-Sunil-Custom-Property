@@ -2536,24 +2536,78 @@ namespace Inflectra.SpiraTest.PlugIns.Jira5DataSync
 
                         foreach (var item in incidentBatch)
                         {
-                            int valueId = item.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag")).FirstOrDefault().IntegerValue.GetValueOrDefault();
-                            string jiraSyncFlag = item.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag")).FirstOrDefault().Definition.CustomList.Values.Where(c => c.CustomPropertyValueId.Equals(valueId)).FirstOrDefault().Name;
-                             
-                            LogErrorEvent("Incident: " + item.IncidentId + "ValueId: " + valueId + "JIRA Sync Flag: " + jiraSyncFlag);
+                            LogErrorEvent("Before Jira Sync Flag Call. Incident: " + item.IncidentId);
+                            LogErrorEvent("Last Sync Date: " + lastSyncDate);
 
-                            //WINDSTREAM: This is an AND condition
-                            //WINSTREAM: First Condition: Checks Jira Sync Flag (custom #29) for "Y" to indication the incident should go to JIRA
-                            //WINDSTREAM: Second Condition: Checking to make sure incident has not previously synced to JIRA
+                            var props = item.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag"));
+                            var propCount = props.Count();
+                            string jiraSyncFlag = string.Empty;
+                            LogErrorEvent("JIRA Sync Flag Count: " + propCount);
+
+                            if (propCount > 0)
+                            {
+                                var prop = props.FirstOrDefault();
+                                LogErrorEvent("JIRA Sync Flag Property is: " + (prop != null));
+
+                                if (prop != null)
+                                {
+                                    var propIntValue = prop.IntegerValue;
+                                    LogErrorEvent("JIRA Sync Flag Property Integer Has Value?: " + propIntValue.HasValue);
+                                    if (propIntValue.HasValue)
+                                    {
+                                        LogErrorEvent("JIRA Sync Flag Property Integer Value is: " + propIntValue.Value);
+
+                                        var propDefinition = item.CustomProperties.Where(i => i.Definition.Name.Equals("JIRA Sync Flag"));
+                                        var proDefintionCount = propDefinition.Count();
+                                        LogErrorEvent("JIRA Sync Flag Property Defintion Count: " + proDefintionCount);
+
+                                        if (proDefintionCount > 0)
+                                        {
+                                            var propDef = propDefinition.FirstOrDefault();
+                                            LogErrorEvent("JIRA Sync Flag Property Defintion is: " + (propDef != null));
+
+                                            if (propDef != null)
+                                            {
+                                                var propDefObject = propDef.Definition;
+                                                LogErrorEvent("JIRA Sync Flag Property Defintion Object is: " + (propDefObject != null));
+
+                                                if (propDefObject != null)
+                                                {
+                                                    var propDefCustomList = propDefObject.CustomList;
+                                                    LogErrorEvent("JIRA Sync Flag Property Defintion Object Custom List is: " + (propDefCustomList != null) + " and its name is: " + propDefCustomList.Name);
+                                                    if (propDefCustomList != null && !string.IsNullOrEmpty(propDefCustomList.Name))
+                                                    {
+                                                        var propDefCustomListValues = propDefCustomList.Values;
+                                                        LogErrorEvent("JIRA Sync Flag Property Defintion Object Custom List Values Count: " + propDefCustomListValues.Count());
+                                                        if (propDefCustomListValues.Count() > 0)
+                                                        {
+                                                            var propDefValues = propDefCustomListValues.Where(c => c.CustomPropertyValueId.Equals(propIntValue.Value));
+                                                            LogErrorEvent("JIRA Sync Flag Property Defintion Object Custom List Values Vs Jira Sync Flag Condition. Count: " + propDefValues.Count());
+                                                            if (propDefValues.Count() > 0)
+                                                            {
+                                                                var propDefValue = propDefValues.FirstOrDefault();
+                                                                LogErrorEvent("JIRA Sync Flag Property Defintion Object Custom List Values Vs Jira Sync Flag is: " + (propDefValue != null));
+                                                                if (propDefValue != null)
+                                                                {
+                                                                    jiraSyncFlag = propDefValue.Name;
+                                                                    LogErrorEvent("JIRA Sync Flag Value is: " + jiraSyncFlag);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
                             if (jiraSyncFlag.Equals("Y", StringComparison.CurrentCultureIgnoreCase) && !incidentMappings.Any(i => i.InternalId.Equals(item.IncidentId.Value)))
                             {
                                 incidentList.Add(item);
                                 LogTraceEvent("Found new Incident: " + item.IncidentId, EventLogEntryType.Information);
                             }
                         }
-
-                        //var newIncidents = incidentBatch.Where(i => incidentMappings.Select(s => s.InternalId).Contains(i.IncidentId.Value));
-                        //incidentList.AddRange(newIncidents);
-                    }
                     LogTraceEvent(eventLog, "Found " + incidentList.Count + " new incidents in " + productName, EventLogEntryType.Information);
 
                     //Create the mapping collections to hold any new items that need to get added to the mappings
